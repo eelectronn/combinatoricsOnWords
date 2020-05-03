@@ -7,6 +7,7 @@ Created on May 01, 2020
 
 
 def generate_modified_de_bruijn(k, n):
+    cont = set([str(j)*n for j in range(k)])
     substr = dict()
     answers = []
     longest = ''
@@ -23,6 +24,10 @@ def generate_modified_de_bruijn(k, n):
                         del substr[sub]
             del s[i]
         if curr == k:
+            sub = ''.join(list(map(str, s[i - n:])))
+            if sub in cont:
+                s = s[0:i - n + 1]
+                i -= n - 1
             i -= 1
             continue
         s.append(curr)
@@ -33,6 +38,9 @@ def generate_modified_de_bruijn(k, n):
                     continue
             else:
                 substr[sub] = i - n + 1
+                if sub in cont:
+                    s += [s[i] for _ in range(n - 1)]
+                    i += n - 1
                 if len(substr) == k ** n:
                     st = ''.join(list(map(str, s)))
                     answers.append(st)
@@ -43,7 +51,7 @@ def generate_modified_de_bruijn(k, n):
     return answers
 
 
-a = generate_modified_de_bruijn(k=3, n=4)
+a = generate_modified_de_bruijn(k=4, n=3)
 longest = a[0]
 for i in range(len(a)):
     if len(a[i]) > len(longest):
