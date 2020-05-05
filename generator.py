@@ -9,6 +9,7 @@ Created on May 01, 2020
 def generate_modified_de_bruijn(k, n):
     cont = set([str(j)*n for j in range(k)])
     substr = dict()
+    used_symbols = []
     answers = []
     longest = ''
     i = 0
@@ -23,6 +24,9 @@ def generate_modified_de_bruijn(k, n):
                     if substr[sub] == i - n + 1:
                         del substr[sub]
             del s[i]
+            if used_symbols[curr - 1] == i:
+                del used_symbols[curr - 1]
+                curr = k
         if curr == k:
             sub = ''.join(list(map(str, s[i - n:])))
             if sub in cont:
@@ -31,6 +35,10 @@ def generate_modified_de_bruijn(k, n):
             i -= 1
             continue
         s.append(curr)
+        if curr > len(used_symbols):
+            continue
+        if curr == len(used_symbols):
+            used_symbols.append(i)
         if len(s) >= n:
             sub = ''.join(list(map(str, s[i - n + 1:])))
             if sub in substr:
@@ -51,7 +59,8 @@ def generate_modified_de_bruijn(k, n):
     return answers
 
 
-a = generate_modified_de_bruijn(k=4, n=3)
+a = generate_modified_de_bruijn(k=3, n=3)
+print(len(a))
 longest = a[0]
 for i in range(len(a)):
     if len(a[i]) > len(longest):
