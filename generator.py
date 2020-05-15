@@ -54,16 +54,19 @@ def generate_modified_de_bruijn(k, n):
                     answers.append(st)
                     if len(st) >= len(longest):
                         longest = st
-                        print(f'{len(longest):03d}', longest)
+                        print(str(len(longest)), longest)
         i += 1
     return answers
 
 
-a = generate_modified_de_bruijn(k=3, n=3)
-print(len(a))
-longest = a[0]
-for i in range(len(a)):
-    if len(a[i]) > len(longest):
-        longest = a[i]
-print(longest)
-print(len(longest))
+task = [(2, 4)]
+
+f = open('results.txt', 'a', 1)
+f.write('results begin\n')
+for t in task:
+    a = generate_modified_de_bruijn(k=t[0], n=t[1])
+    print('k:', t[0], 'n:', t[1])
+    print(len(a))
+    print(a)
+    print('---------------------')
+    # f.write('k: ' + str(t[0]) + ' n: ' + str(t[1]) + '\n' + str(len(a)) + '\n' + a + '\n----------------------\n')
