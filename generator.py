@@ -59,7 +59,7 @@ def generate_modified_de_bruijn(k, n):
     return answers
 
 
-task = [(2, 4)]
+task = [(2, 5)]
 
 f = open('results.txt', 'a', 1)
 f.write('results begin\n')

@@ -4,4 +4,5 @@ env
 .ipynb_checkpoints
 g.gml
 example.html
+__pycache__
 
