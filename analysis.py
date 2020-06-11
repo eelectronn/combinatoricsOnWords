@@ -22,7 +22,7 @@ def count_occurrences(string, substring):
 
 n = 4
 a = list(itertools.product('01', repeat=n))
-s = '010100110111100001'
+s = '000000011111110110110010101000'
 print(len(s))
 a = [count_occurrences(s, ''.join(tup)) for tup in a]
 a.sort(key=lambda x: x[1])
