@@ -20,9 +20,9 @@ def count_occurrences(string, substring):
     return substring, count
 
 
-n = 4
+n = 5
 a = list(itertools.product('01', repeat=n))
-s = '000000011111110110110010101000'
+s = '00000000010101010110100100100011001100111011101111111110000'
 print(len(s))
 a = [count_occurrences(s, ''.join(tup)) for tup in a]
 a.sort(key=lambda x: x[1])
