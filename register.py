@@ -173,90 +173,98 @@ def generate(n, next_bit):
                 break
     return ndr, db
 
-largest = []
-for i in range(2, 18):
-    print('n:', i)
-    l = -1
-    large = 'prefer opposite'
 
-    ndr, db = generate_prefer_opposite(i)
-    print('prefer opposite')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
+def write():
+    largest = []
+    for i in range(2, 18):
+        print('n:', i)
+        l = -1
         large = 'prefer opposite'
-        l = len(ndr)
 
-    ndr, db = generate(i, pcr1_next)
-    print('pcr1')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
-        large = 'pcr1'
-        l = len(ndr)
+        ndr, db = generate_prefer_opposite(i)
+        print('prefer opposite')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'prefer opposite'
+            l = len(ndr)
 
-    ndr, db = generate(i, pcr2_next)
-    print('pcr2')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
-        large = 'pcr2'
-        l = len(ndr)
+        ndr, db = generate(i, pcr1_next)
+        print('pcr1')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'pcr1'
+            l = len(ndr)
 
-    ndr, db = generate(i, pcr3_next)
-    print('pcr3')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
-        large = 'pcr3'
-        l = len(ndr)
+        ndr, db = generate(i, pcr2_next)
+        print('pcr2')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'pcr2'
+            l = len(ndr)
 
-    ndr, db = generate(i, pcr4_next)
-    print('pcr4')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
-        large = 'pcr4'
-        l = len(ndr)
+        ndr, db = generate(i, pcr3_next)
+        print('pcr3')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'pcr3'
+            l = len(ndr)
 
-    ndr, db = generate(i, ccr1_next)
-    print('ccr1')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
-        large = 'ccr1'
-        l = len(ndr)
+        ndr, db = generate(i, pcr4_next)
+        print('pcr4')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'pcr4'
+            l = len(ndr)
 
-    ndr, db = generate(i, ccr2_next)
-    print('ccr2')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
-        large = 'ccr2'
-        l = len(ndr)
+        ndr, db = generate(i, ccr1_next)
+        print('ccr1')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'ccr1'
+            l = len(ndr)
 
-    ndr, db = generate(i, ccr3_next)
-    print('ccr3')
-    print(db)
-    print(ndr)
-    print(len(ndr))
-    print()
-    if len(ndr) > l:
-        large = 'ccr3'
-        l = len(ndr)
-    largest.append(large)
-print(largest)
+        ndr, db = generate(i, ccr2_next)
+        print('ccr2')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'ccr2'
+            l = len(ndr)
+
+        ndr, db = generate(i, ccr3_next)
+        print('ccr3')
+        print(db)
+        print(ndr)
+        print(len(ndr))
+        print()
+        if len(ndr) > l:
+            large = 'ccr3'
+            l = len(ndr)
+        largest.append(large)
+    print(largest)
+
+
+r = generate_repeateble_factors(9)
+for f in r:
+    if len(f) == 16:
+        print(f)
