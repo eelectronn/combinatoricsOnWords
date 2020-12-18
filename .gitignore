@@ -5,4 +5,5 @@ env
 g.gml
 example.html
 __pycache__
+.DS_Store
 
